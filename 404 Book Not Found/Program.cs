@@ -1,7 +1,15 @@
+using _404_Book_Not_Found.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); // using Microsoft.AspNetCore.Mvc;
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"))); // using Microsoft.EntityFrameworkCore;
+
+
 
 var app = builder.Build();
 
